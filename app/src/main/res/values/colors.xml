@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="bg">#00BCD4</color>
+    <color name="lightgray">#ededed</color>
+    <color name="sky">#2979FF</color>
+    <color name="purple">#9C27B0</color>
+    <color name="orange">#FF5722</color>
+</resources>

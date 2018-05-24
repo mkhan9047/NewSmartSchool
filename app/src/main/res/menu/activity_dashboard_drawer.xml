@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="Notification" />
+        <item
+            android:id="@+id/nav_notes"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Notes" />
+        <item
+            android:id="@+id/nav_holiday_caldender"
+            android:icon="@drawable/ic_date_range_black_24dp"
+            android:title="Holiday Calender" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_report_black_24dp"
+            android:title="Attendance Report" />
+        <item
+            android:id="@+id/nav_result"
+            android:icon="@drawable/ic_resultmenu"
+            android:title="Results" />
+        <item
+            android:id="@+id/nav_homework"
+            android:icon="@drawable/ic_homworkmenu"
+            android:title="Homeworks" />
+        <item
+            android:id="@+id/nav_fees"
+            android:icon="@drawable/ic_feesmenu"
+            android:title="Fees" />
+        <item
+            android:id="@+id/nav_complain"
+            android:icon="@drawable/ic_complainmenu"
+            android:title="Complaint Box" />
+    </group>
+
+    <item android:title="User">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_profile"
+                android:title="Profile" />
+            <item
+                android:id="@+id/nav_log_out"
+                android:icon="@drawable/ic_logoutmenu"
+                android:title="Log Out" />
+        </menu>
+    </item>
+
+</menu>
