@@ -1,5 +1,8 @@
 package notification.push.com.smartschool.Activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,27 +24,34 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import notification.push.com.smartschool.Dialog.NoteDailogFragment;
 import notification.push.com.smartschool.Fragment.FragmentDashborad;
 import notification.push.com.smartschool.Fragment.FragmentNotice;
+import notification.push.com.smartschool.Fragment.HolidayCalender;
+import notification.push.com.smartschool.Fragment.HomeworkFragment;
+import notification.push.com.smartschool.Fragment.Note;
 import notification.push.com.smartschool.LocalStroage.Stroage;
 import notification.push.com.smartschool.Models.Student;
 import notification.push.com.smartschool.R;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     Student student;
     TextView user_name, user_reg;
     Stroage stroage;
     Fragment currentFragment;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 /*
         Intent i = getIntent();
-
         student = (Student) i.getSerializableExtra("profile");
         Stroage stroage = new Stroage(this);
         stroage.SaveCurrentUSer(student.getStudent_name());
@@ -54,7 +64,7 @@ public class Dashboard extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+         navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         user_name = header.findViewById(R.id.user_name);
         user_reg = header.findViewById(R.id.user_reg);
@@ -73,9 +83,38 @@ public class Dashboard extends AppCompatActivity
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
+
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+
+        }else if(!(currentFragment instanceof FragmentDashborad)){
+
+            currentFragment = new FragmentDashborad();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Dashboard");
+            }
+
+        }else {
+
+            final android.support.v7.app.AlertDialog.Builder dailog = new android.support.v7.app.AlertDialog.Builder(this);
+            dailog.setMessage("Do you want to exit?");
+            dailog.setIcon(R.mipmap.ic_launcher_round);
+            dailog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    moveTaskToBack(true);
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                    System.exit(1);
+                }
+            });
+
+            dailog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            dailog.show();
         }
     }
 
@@ -125,6 +164,27 @@ public class Dashboard extends AppCompatActivity
             if(getSupportActionBar()!=null){
                 getSupportActionBar().setTitle("Dashboard");
             }
+        }else if(id==R.id.nav_notes){
+            currentFragment = new Note();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Notes");
+            }
+        }else if(id==R.id.nav_fees){
+            NoteDailogFragment fragment = new NoteDailogFragment();
+            fragment.show(getSupportFragmentManager(),null);
+        }else if(id == R.id.nav_homework){
+            currentFragment = new HomeworkFragment();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Homework");
+            }
+        }else if(id == R.id.nav_holiday_caldender){
+            currentFragment = new HolidayCalender();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Holidays");
+            }
         }
 
 
@@ -134,8 +194,20 @@ public class Dashboard extends AppCompatActivity
     }
 
     public void FragmentTransction(){
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+       FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.trans_frame,currentFragment);
         fragmentTransaction.commit();
+    }
+    public void FragmentTransction(Fragment fragment, String text, int id){
+        currentFragment = fragment;
+       FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.trans_frame,fragment);
+        fragmentTransaction.setTransitionStyle(FragmentTransaction.TRANSIT_ENTER_MASK);
+        fragmentTransaction.commit();
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setTitle(text);
+        }
+        navigationView.setCheckedItem(id);
+
     }
 }

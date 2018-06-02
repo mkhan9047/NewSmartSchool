@@ -7,49 +7,50 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_height="149dp"
         android:layout_margin="5dp"
-        android:elevation="8dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:divider="@android:color/transparent"
         android:dividerHeight="0.0px"
-        android:clipToPadding="false"
-        android:clipChildren="false"
+        android:elevation="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardElevation="10dp"
         app:cardPreventCornerOverlap="false"
-      >
+     >
 
         <RelativeLayout
 
-            android:layout_margin="8dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
 
 
             <TextView
                 android:id="@+id/homework_id"
                 android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="#FFFF"
+                android:layout_height="40dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/shapeaccentcircle"
                 android:layout_alignParentTop="true"
-                android:text="1" />
+                android:background="@drawable/shapeaccentcircle"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:textColor="#000000"
                 android:id="@+id/homework_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/homework_id"
                 android:layout_alignBottom="@+id/homework_id"
                 android:layout_marginStart="14dp"
+                android:textColor="#000000"
                 android:layout_toEndOf="@+id/homework_id"
                 android:text="Power BL content"
                 android:textSize="25sp"
+                android:maxLines="1"
                 android:textStyle="bold" />
 
             <TextView
@@ -59,18 +60,27 @@
                 android:layout_alignStart="@+id/homework_title"
                 android:layout_below="@+id/homework_id"
                 android:maxLines="2"
-                android:textSize="15sp"
-                android:text="This is a simple notification of Doon school. we are the leading school of India." />
+                android:text="This is a simple notification of Doon school. we are the leading school of India."
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/teacher_name"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/homework_des"
                 android:layout_below="@+id/homework_des"
-                android:text="29 May 2018 " />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:text="From: Dines Daribal" />
+
+            <TextView
+                android:id="@+id/note_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/teacher_name"
+                android:layout_below="@+id/teacher_name"
+                android:text="29 May 2018" />
 
 
         </RelativeLayout>

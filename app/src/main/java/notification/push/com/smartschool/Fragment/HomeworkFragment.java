@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +17,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
-import notification.push.com.smartschool.Adapter.NoticeRecycleAdapter;
+import notification.push.com.smartschool.Adapter.HomeworkAdapter;
 import notification.push.com.smartschool.LocalStroage.Stroage;
-import notification.push.com.smartschool.Models.Notice;
+import notification.push.com.smartschool.Models.Homework;
+import notification.push.com.smartschool.Models.Notes;
 import notification.push.com.smartschool.Networking.RetrofitClient;
 import notification.push.com.smartschool.Networking.RetrofitInterface;
 import notification.push.com.smartschool.R;
@@ -34,12 +33,13 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentNotice extends Fragment {
+public class HomeworkFragment extends Fragment {
 
     RecyclerView recyclerView;
-    NoticeRecycleAdapter adapter;
-    List<Notice.Items> items;
-    public FragmentNotice() {
+    HomeworkAdapter adapter;
+    List<Homework.Works> homework;
+
+    public HomeworkFragment() {
         // Required empty public constructor
     }
 
@@ -48,45 +48,44 @@ public class FragmentNotice extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_notice, container, false);
+        return inflater.inflate(R.layout.fragment_homework, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        View view = getView();
         Stroage stroage = new Stroage(getActivity());
-        stroage.SaveNoticeCount(0);
-        stroage.SaveNoticeSate(true);
+        stroage.SaveHomeworkCount(0);
+        stroage.SaveHomeworkSate(true);
 
-        if(getView()!=null){
-            recyclerView = getView().findViewById(R.id.notice_recyler);
+        if(view != null){
+            recyclerView = view.findViewById(R.id.homework_recycle);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setHasFixedSize(true);
         }
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setHasFixedSize(true);
-
-        items = new ArrayList<>();
-
-        onDataLoad();
+        homework = new ArrayList<>();
+        onDataCall();
     }
 
-    private void onDataLoad(){
+    private void onDataCall() {
         final ProgressDialog dailog = new ProgressDialog(getActivity());
-        dailog.setMessage("Getting Notices....");
+        dailog.setMessage("Getting Homeworks....");
         dailog.show();
+        Stroage stroage = new Stroage(getActivity());
         RetrofitInterface retrofitInterface = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        Call<Notice> getNotice = retrofitInterface.getNotice();
-        getNotice.enqueue(new Callback<Notice>() {
+        final Call<Homework> homeworkCall = retrofitInterface.getHomework(stroage.GetCurentUserReg());
+        homeworkCall.enqueue(new Callback<Homework>() {
             @Override
-            public void onResponse(Call<Notice> call, Response<Notice> response) {
-                Notice notice = response.body();
-                if(notice != null){
-                    items = notice.getNotice();
+            public void onResponse(Call<Homework> call, Response<Homework> response) {
+                Homework work = response.body();
+                if(work != null){
+                    homework = work.getHomeworks();
                     @SuppressLint("SimpleDateFormat")
                     final SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-                    Collections.sort(items, new Comparator<Notice.Items>() {
+                    Collections.sort(homework, new Comparator<Homework.Works>() {
                         @Override
-                        public int compare(Notice.Items items, Notice.Items t1) {
+                        public int compare(Homework.Works items, Homework.Works t1) {
                             try {
                                 return df.parse(t1.getCreated_date()).compareTo(df.parse(items.getCreated_date()));
                             } catch (ParseException e) {
@@ -95,7 +94,8 @@ public class FragmentNotice extends Fragment {
                             return 0;
                         }
                     });
-                    adapter = new NoticeRecycleAdapter(items, getFragmentManager());
+
+                    adapter = new HomeworkAdapter(homework, getFragmentManager(), getActivity());
                     recyclerView.setAdapter(adapter);
                     if(dailog.isShowing()){
                         dailog.dismiss();
@@ -104,8 +104,8 @@ public class FragmentNotice extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Notice> call, Throwable t) {
-                Log.d("noticeerror",t.getMessage());
+            public void onFailure(Call<Homework> call, Throwable t) {
+
             }
         });
     }

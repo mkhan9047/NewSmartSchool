@@ -2,6 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval"
     >
-    <solid android:color="@color/colorAccent"> </solid>
-
+<gradient android:startColor="@color/colorPrimary" android:endColor="@color/colorPrimaryDark" android:angle="180" android:type="linear" android:gradientRadius="30dp" />
 </shape>

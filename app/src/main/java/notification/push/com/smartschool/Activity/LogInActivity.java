@@ -150,7 +150,9 @@ public class LogInActivity extends AppCompatActivity {
             public void onResponse(Call<LogIn> call, Response<LogIn> response) {
                 LogIn logIn = response.body();
                 if(logIn!=null){
+
                     if(logIn.getSuccess()==1){
+
                         indicate.setVisibility(View.GONE);
                         stroage.SaveLogInSate(true);
                         stroage.SaveUserRegNo(logIn.getReg_no());
@@ -160,11 +162,14 @@ public class LogInActivity extends AppCompatActivity {
                         //intent.putExtra("profile",(Serializable) logIn.getStudent().get(0));
                         startActivity(intent);
                         finish();
+
                     }else{
+
                         indicate.setVisibility(View.VISIBLE);
                     }
 
                     if(progressDialog.isShowing()){
+
                         progressDialog.dismiss();
                     }
                 }

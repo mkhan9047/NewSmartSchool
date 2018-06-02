@@ -1,12 +1,13 @@
 package notification.push.com.smartschool.Models;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Mujahid on 5/24/2018.
  */
 
-public class Notice {
+public class Notice implements Serializable {
 
     private List<Items> notice;
 
@@ -18,7 +19,7 @@ public class Notice {
         return notice;
     }
 
-    public static class Items {
+    public static class Items implements Serializable {
         private int notice_id;
         private String notice_date;
         private String notice_title;

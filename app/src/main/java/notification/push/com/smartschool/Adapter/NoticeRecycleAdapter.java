@@ -1,14 +1,18 @@
 package notification.push.com.smartschool.Adapter;
 
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import notification.push.com.smartschool.Dialog.NoticeDialogFragment;
 import notification.push.com.smartschool.Models.Notice;
 import notification.push.com.smartschool.R;
 
@@ -18,9 +22,10 @@ import notification.push.com.smartschool.R;
 
 public class NoticeRecycleAdapter extends RecyclerView.Adapter<NoticeRecycleAdapter.MyViewHolder> {
     private List<Notice.Items> notices = new ArrayList<>();
-
-    public NoticeRecycleAdapter(List<Notice.Items> notices) {
+    private FragmentManager manage;
+    public NoticeRecycleAdapter(List<Notice.Items> notices, FragmentManager manage) {
         this.notices = notices;
+        this.manage = manage;
     }
 
     @Override
@@ -42,15 +47,29 @@ public class NoticeRecycleAdapter extends RecyclerView.Adapter<NoticeRecycleAdap
         return notices.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView indicate, title, description, date;
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            indicate = itemView.findViewById(R.id.notice_id_);
-            title = itemView.findViewById(R.id.notice_title);
-            description = itemView.findViewById(R.id.notice_des);
-            date = itemView.findViewById(R.id.notice_date);
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        TextView indicate, title, description, date;
+
+        public MyViewHolder(View itemView) {
+
+            super(itemView);
+
+            itemView.setOnClickListener(this);
+            indicate = itemView.findViewById(R.id.homework_id);
+            title = itemView.findViewById(R.id.homework_title);
+            description = itemView.findViewById(R.id.homework_des);
+            date = itemView.findViewById(R.id.teacher_name);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            NoticeDialogFragment fragment = new NoticeDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("data",(Serializable) notices.get(getAdapterPosition()));
+            fragment.setArguments(bundle);
+            fragment.show(manage,null);
         }
     }
 }

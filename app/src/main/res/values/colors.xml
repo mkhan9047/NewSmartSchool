@@ -8,4 +8,6 @@
     <color name="sky">#2979FF</color>
     <color name="purple">#9C27B0</color>
     <color name="orange">#FF5722</color>
+    <color name="transparent_black_12">#70000000</color>
+    <color name="for_transparent">#70FF4081</color>
 </resources>

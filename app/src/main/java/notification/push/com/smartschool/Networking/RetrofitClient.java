@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static final String baseURL = "http://doon.maarina.com/";
-
+    private static final String DOWNLOAD_BASE = "http://doon.maarina.com/teacher@apanel123/homework/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getRetrofit(){

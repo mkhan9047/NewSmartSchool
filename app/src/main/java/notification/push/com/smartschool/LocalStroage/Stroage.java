@@ -13,6 +13,13 @@ public class Stroage {
     private static final String CURRENT_USER = "N/A";
     private static final String CURRENT_USER_REG = "N/A";
     private static final int NOTICE_COUNT = 0;
+    private static final boolean NOTICE_STATE = false;
+    private static final int NOTICE_HOLDER = 0;
+
+    private static final int HOMEWORK_COUNT = 0;
+    private static final boolean HOMEWORK_STATE = false;
+    private  static final int HOMEWORK_HOLDER = 0;
+
 
     private Context context;
 
@@ -54,11 +61,54 @@ public class Stroage {
     }
 
 
-    public void SaveNoticeCount(int c){
+    public void SaveNoticeCount(Integer c){
         getPreferencesEditor().putInt("count",c).commit();
     }
-    public int GetNoticeCount(){
-        return getsharedPreferences().getInt("user",NOTICE_COUNT);
+    public Integer GetNoticeCount(){
+        return getsharedPreferences().getInt("count",NOTICE_COUNT);
     }
+
+    public void SaveNoticeSate(boolean p) {
+        getPreferencesEditor().putBoolean("show", p).commit();
+    }
+
+    public boolean getNoticeState() {
+
+        return getsharedPreferences().getBoolean("show", NOTICE_STATE);
+    }
+    public void SaveNoticeHolder(Integer c){
+        getPreferencesEditor().putInt("c",c).commit();
+    }
+    public Integer GetNoticeHolder(){
+        return getsharedPreferences().getInt("c",NOTICE_HOLDER);
+    }
+
+
+
+    //homework part
+    public void SaveHomeworkCount(Integer c){
+        getPreferencesEditor().putInt("home",c).commit();
+    }
+    public Integer GetHomeworkCount(){
+        return getsharedPreferences().getInt("home",HOMEWORK_COUNT);
+    }
+
+    public void SaveHomeworkSate(boolean p) {
+        getPreferencesEditor().putBoolean("home_show", p).commit();
+    }
+
+    public boolean getHomeworkState() {
+
+        return getsharedPreferences().getBoolean("home_show", HOMEWORK_STATE);
+    }
+
+    public void SaveHomeworkHolder(Integer c){
+        getPreferencesEditor().putInt("holder",c).commit();
+
+    }
+    public Integer GetHomeworkHolder() {
+        return getsharedPreferences().getInt("holder",HOMEWORK_HOLDER);
+    }
+
 
 }
