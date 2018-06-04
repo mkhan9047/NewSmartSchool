@@ -144,7 +144,7 @@ public class HolidayCalender extends Fragment {
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(getActivity());
         //alt_bld.setIcon(R.drawable.icon);
         alt_bld.setTitle(Title);
-        alt_bld.setMessage(String.format("All term of the School will be off on %s for %s\n Total Off Days: %d",date, oca,1));
+        alt_bld.setMessage(String.format("All term of the School will be off on %s for %s\n\n Total Off Days: %d",date, oca,1));
 
         alt_bld.setNeutralButton("Done", new DialogInterface.OnClickListener() {
             @Override
@@ -159,10 +159,20 @@ public class HolidayCalender extends Fragment {
 
     @SuppressLint("DefaultLocale")
     void dialog(String Title, String fromDate,String toDate,String oca) {
+        Date from = null;
+        Date to = null;
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(getActivity());
         //alt_bld.setIcon(R.drawable.icon);
         alt_bld.setTitle(Title);
-        alt_bld.setMessage(String.format("All term of the School will be off from %s to %s for %s",fromDate,toDate,oca));
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+             from = formater.parse(fromDate);
+             to = formater.parse(toDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        alt_bld.setMessage(String.format("All term of the School will be off from %s to %s for %s. \n\n Total Off Days: %d",fromDate,toDate,oca,Helper.getDifferenceDays(from,to)));
 
 
        alt_bld.setNeutralButton("Done", new DialogInterface.OnClickListener() {

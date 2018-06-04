@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="5dp"
+    android:padding="2dp"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="149dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -16,11 +16,11 @@
         android:elevation="8dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardPreventCornerOverlap="false"
      >
 
         <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp">
@@ -28,9 +28,9 @@
 
             <TextView
                 android:id="@+id/homework_id"
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:textColor="#FFFF"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/shapeaccentcircle"
@@ -46,10 +46,10 @@
                 android:layout_alignBaseline="@+id/homework_id"
                 android:layout_alignBottom="@+id/homework_id"
                 android:layout_marginStart="14dp"
-                android:textColor="#000000"
+                android:textColor="#FFFF"
                 android:layout_toEndOf="@+id/homework_id"
                 android:text="Power BL content"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:maxLines="1"
                 android:textStyle="bold" />
 
@@ -60,6 +60,7 @@
                 android:layout_alignStart="@+id/homework_title"
                 android:layout_below="@+id/homework_id"
                 android:maxLines="2"
+                android:textColor="#FFFF"
                 android:text="This is a simple notification of Doon school. we are the leading school of India."
                 android:textSize="15sp" />
 
@@ -69,7 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/homework_des"
                 android:layout_below="@+id/homework_des"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#FFFF"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
                 android:text="From: Dines Daribal" />
@@ -80,9 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/teacher_name"
                 android:layout_below="@+id/teacher_name"
+                android:textColor="#FFFF"
                 android:text="29 May 2018" />
-
-
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

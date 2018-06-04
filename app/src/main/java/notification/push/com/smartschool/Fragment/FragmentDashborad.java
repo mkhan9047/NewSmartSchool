@@ -49,13 +49,13 @@ public class FragmentDashborad extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         stroage = new Stroage(getActivity());
-        GetNoticeCount();
-        getHomeworkCount();
+       // GetNoticeCount();
+       // getHomeworkCount();
         View view = getView();
         if(view!=null){
-            indicator = view.findViewById(R.id.notice_indicator);
-            home_indicator = view.findViewById(R.id.homework_indicator);
-            finance = view.findViewById(R.id.finance);
+           // indicator = view.findViewById(R.id.notice_indicator);
+           // home_indicator = view.findViewById(R.id.homework_indicator);
+            finance = view.findViewById(R.id.notice);
             homework =view.findViewById(R.id.homework);
             homework.setOnClickListener(new View.OnClickListener() {
                 @Override

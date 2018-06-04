@@ -12,7 +12,7 @@
         android:padding="120dp"
         android:scaleType="centerInside"
         android:background="@drawable/bg_school"
-        android:src="@drawable/sc_logo"
+        android:src="@drawable/without_bg_logo"
 
         />
 <RelativeLayout

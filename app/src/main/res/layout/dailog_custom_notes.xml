@@ -35,17 +35,17 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:text="Note ID: 6"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textView2"
-            android:textColor="#000000"
             android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/dg_homework_id"
             android:layout_below="@+id/dg_homework_id"
             android:text="Note Title"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -56,18 +56,19 @@
             android:layout_below="@+id/textView2"
             android:textSize="17sp"
             android:maxLines="2"
+            android:textColor="#000000"
             android:layout_marginTop="0dp"
             android:text="Aron you have to do the math and " />
 
         <TextView
             android:id="@+id/textView4"
-            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/dg_notice_title"
             android:layout_below="@+id/dg_notice_title"
             android:text="Message"
-            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -77,7 +78,8 @@
             android:layout_alignStart="@+id/textView4"
             android:layout_below="@+id/textView4"
             android:maxLines="5"
-            android:textSize="15sp"
+            android:textSize="17sp"
+            android:textColor="#000000"
             android:text="Arron I have provided you some task you need to complete all the task before next holiday. Otherwise I will punish you, remember it." />
 
         <TextView
@@ -87,7 +89,7 @@
             android:layout_alignStart="@+id/dg_homework_message"
             android:layout_below="@+id/dg_homework_message"
             android:layout_marginTop="24dp"
-
+            android:textColor="#000000"
             android:maxLines="1"
             android:text="From: Feroz Ahmed Dar"
             android:textSize="17sp" />
@@ -96,7 +98,7 @@
             android:id="@+id/dg_homework_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="#000000"
             android:layout_alignStart="@+id/textView3"
             android:layout_below="@+id/textView3"
             android:text="To: Arraon Mir"
@@ -109,6 +111,7 @@
             android:layout_alignStart="@+id/textView5"
             android:layout_below="@+id/textView5"
             android:text="Note Date: 29 April 2018"
+            android:textColor="#000000"
             android:textSize="17sp" />
 
         <TextView
@@ -117,6 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView6"
             android:layout_below="@+id/textView6"
+            android:textColor="#000000"
             android:text="Sending Date: 27 April 2018 9:00 am"
             android:textSize="17sp" />
 
@@ -127,8 +131,8 @@
             android:layout_alignStart="@+id/dg_homework_message"
             android:layout_below="@+id/dg_homework_message"
             android:text="From"
-            android:textColor="#000000"
-            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -137,9 +141,9 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/dg_homework_from"
             android:layout_below="@+id/dg_homework_from"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
             android:textStyle="bold"
-            android:textColor="#000000"
             android:text="To" />
 
         <TextView
@@ -149,19 +153,19 @@
             android:layout_alignStart="@+id/dg_homework_to"
             android:layout_below="@+id/dg_homework_to"
             android:text="Note Date"
-            android:textColor="#000000"
-            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView6"
-            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/dg_homework_date"
             android:layout_below="@+id/dg_homework_date"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
             android:text="Sending Date" />
 
 

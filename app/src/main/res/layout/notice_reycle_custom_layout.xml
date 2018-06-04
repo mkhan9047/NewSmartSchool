@@ -17,6 +17,7 @@
         android:clipChildren="false"
         app:cardElevation="10dp"
         app:cardPreventCornerOverlap="false"
+        app:cardBackgroundColor="@color/colorPrimary"
       >
 
         <RelativeLayout
@@ -28,8 +29,8 @@
 
             <TextView
                 android:id="@+id/homework_id"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="20sp"
@@ -40,7 +41,7 @@
                 android:text="1" />
 
             <TextView
-                android:textColor="#000000"
+                android:textColor="#FFFF"
                 android:id="@+id/homework_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +50,7 @@
                 android:layout_marginStart="14dp"
                 android:layout_toEndOf="@+id/homework_id"
                 android:text="Power BL content"
-                android:textSize="25sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -59,6 +60,7 @@
                 android:layout_alignStart="@+id/homework_title"
                 android:layout_below="@+id/homework_id"
                 android:maxLines="2"
+                android:textColor="#FFFF"
                 android:textSize="15sp"
                 android:text="This is a simple notification of Doon school. we are the leading school of India." />
 
@@ -66,7 +68,8 @@
                 android:id="@+id/teacher_name"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#FFFF"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/homework_des"
                 android:layout_below="@+id/homework_des"

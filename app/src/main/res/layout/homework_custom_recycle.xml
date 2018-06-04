@@ -16,6 +16,7 @@
         android:clipToPadding="false"
         android:clipChildren="false"
         app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardPreventCornerOverlap="false"
         >
 
@@ -47,7 +48,7 @@
                 android:layout_marginStart="11dp"
                 android:layout_toEndOf="@+id/homework_id"
                 android:maxLines="2"
-                android:textColor="#000000"
+                android:textColor="#FFFF"
                 android:textStyle="bold"
                 android:text="This is a simple notification of Doon school. we are the leading school of India."
                 android:textSize="17sp" />
@@ -59,7 +60,8 @@
                 android:layout_alignStart="@+id/homework_des"
                 android:layout_below="@+id/homework_des"
                 android:layout_marginBottom="5dp"
-                android:textSize="17sp"
+                android:textColor="#FFFF"
+                android:textSize="15sp"
                 android:layout_marginTop="5dp"
                 android:text="From: Jites" />
 
@@ -70,7 +72,8 @@
                 android:layout_alignStart="@+id/homework_teacher"
                 android:layout_below="@+id/homework_teacher"
                 android:text="23 May 2018"
-                android:textSize="17sp" />
+                android:textColor="#FFFF"
+                android:textSize="15sp" />
 
             <ImageView
                 android:id="@+id/download_img"
