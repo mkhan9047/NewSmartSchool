@@ -51,7 +51,6 @@ public class LogInActivity extends AppCompatActivity {
         reg_no = findViewById(R.id.reg_no);
         password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
-        forgot_pass = findViewById(R.id.txt_forgot_pass);
         indicate = findViewById(R.id.indicate);
     }
 

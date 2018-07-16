@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import java.net.SocketTimeoutException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import notification.push.com.smartschool.Models.Notice;
 import notification.push.com.smartschool.Networking.RetrofitClient;
 import notification.push.com.smartschool.Networking.RetrofitInterface;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Helper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,8 +69,12 @@ public class FragmentNotice extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         items = new ArrayList<>();
+if(Helper.isInternetAvaiable(getActivity())){
+    onDataLoad();
+}else{
+    Toast.makeText(getActivity(), "No Internet!", Toast.LENGTH_SHORT).show();
+}
 
-        onDataLoad();
     }
 
     private void onDataLoad(){
@@ -105,7 +112,9 @@ public class FragmentNotice extends Fragment {
 
             @Override
             public void onFailure(Call<Notice> call, Throwable t) {
-                Log.d("noticeerror",t.getMessage());
+                if(t instanceof SocketTimeoutException){
+                    Toast.makeText(getActivity(), "Connection Timeout!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

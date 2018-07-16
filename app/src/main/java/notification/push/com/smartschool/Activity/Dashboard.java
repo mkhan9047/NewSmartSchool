@@ -25,11 +25,16 @@ import android.widget.TextView;
 import java.util.List;
 
 import notification.push.com.smartschool.Dialog.NoteDailogFragment;
+import notification.push.com.smartschool.Fragment.AttendenceFragment;
+import notification.push.com.smartschool.Fragment.ComplimentFragment;
+import notification.push.com.smartschool.Fragment.FeesFragment;
 import notification.push.com.smartschool.Fragment.FragmentDashborad;
 import notification.push.com.smartschool.Fragment.FragmentNotice;
 import notification.push.com.smartschool.Fragment.HolidayCalender;
 import notification.push.com.smartschool.Fragment.HomeworkFragment;
 import notification.push.com.smartschool.Fragment.Note;
+import notification.push.com.smartschool.Fragment.ProfileFregment;
+import notification.push.com.smartschool.Fragment.ResultFragment;
 import notification.push.com.smartschool.LocalStroage.Stroage;
 import notification.push.com.smartschool.Models.Student;
 import notification.push.com.smartschool.R;
@@ -171,20 +176,53 @@ public class Dashboard extends AppCompatActivity
                 getSupportActionBar().setTitle("Notes");
             }
         }else if(id==R.id.nav_fees){
-            NoteDailogFragment fragment = new NoteDailogFragment();
-            fragment.show(getSupportFragmentManager(),null);
+            currentFragment = new FeesFragment();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Fees");
+            }
+
         }else if(id == R.id.nav_homework){
+
             currentFragment = new HomeworkFragment();
             FragmentTransction();
             if(getSupportActionBar()!=null){
                 getSupportActionBar().setTitle("Homework");
             }
+
         }else if(id == R.id.nav_holiday_caldender){
             currentFragment = new HolidayCalender();
             FragmentTransction();
             if(getSupportActionBar()!=null){
                 getSupportActionBar().setTitle("Holidays");
             }
+        }else if(id == R.id.nav_profile){
+            currentFragment = new ProfileFregment();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Profile");
+            }
+        }else if(id==R.id.nav_result){
+            currentFragment = new ResultFragment();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Result");
+            }
+        }else if(id == R.id.nav_complain){
+            currentFragment = new ComplimentFragment();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Complaint");
+            }
+        }else if(id == R.id.nav_manage){
+            currentFragment = new AttendenceFragment();
+            FragmentTransction();
+            if(getSupportActionBar()!=null){
+                getSupportActionBar().setTitle("Attendances");
+            }
+        }else if(id == R.id.nav_about){
+            Intent intent = new Intent(this, About.class);
+            startActivity(intent);
         }
 
 

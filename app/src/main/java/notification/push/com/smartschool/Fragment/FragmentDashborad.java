@@ -11,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.net.SocketTimeoutException;
 
 import notification.push.com.smartschool.Activity.Dashboard;
 import notification.push.com.smartschool.Adapter.NoticeRecycleAdapter;
@@ -20,6 +23,7 @@ import notification.push.com.smartschool.Models.Notice;
 import notification.push.com.smartschool.Networking.RetrofitClient;
 import notification.push.com.smartschool.Networking.RetrofitInterface;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Helper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,9 +33,9 @@ import retrofit2.Response;
  */
 public class FragmentDashborad extends Fragment {
 
-    TextView indicator, home_indicator;
+    TextView indicator, home_indicator, login_indicate;
     Stroage stroage;
-    CardView finance, homework;
+    CardView finance, homework, notes, holidays, attendence, profile, compliment, result, fees;
     public FragmentDashborad() {
         // Required empty public constructor
     }
@@ -49,14 +53,85 @@ public class FragmentDashborad extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         stroage = new Stroage(getActivity());
-       // GetNoticeCount();
-       // getHomeworkCount();
+     //  GetNoticeCount();
+        if(Helper.isInternetAvaiable(getActivity())){
+            getHomeworkCount();
+        }else{
+            Toast.makeText(getActivity(), "No Internet!", Toast.LENGTH_SHORT).show();
+        }
+
         View view = getView();
         if(view!=null){
            // indicator = view.findViewById(R.id.notice_indicator);
-           // home_indicator = view.findViewById(R.id.homework_indicator);
+            home_indicator = view.findViewById(R.id.home_indicator);
             finance = view.findViewById(R.id.notice);
             homework =view.findViewById(R.id.homework);
+            holidays = view.findViewById(R.id.das_holiday);
+            fees = view.findViewById(R.id.das_fees);
+            attendence = view.findViewById(R.id.das_attendence);
+            result = view.findViewById(R.id.das_result);
+            compliment = view.findViewById(R.id.das_complaint);
+            notes = view.findViewById(R.id.das_notes);
+            profile = view.findViewById(R.id.das_profile);
+            login_indicate = view.findViewById(R.id.login_indication);
+
+            login_indicate.setText(String.format("Logged In As %s",stroage.GetCurentUser()));
+
+
+            holidays.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragment = new HolidayCalender();
+                    ((Dashboard)getActivity()).FragmentTransction(fragment,"Holidays",R.id.nav_holiday_caldender);
+                }
+            });
+
+            fees.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragment = new FeesFragment();
+                    ((Dashboard)getActivity()).FragmentTransction(fragment,"Fees",R.id.nav_fees);
+                }
+            });
+
+            attendence.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragment = new AttendenceFragment();
+                    ((Dashboard)getActivity()).FragmentTransction(fragment,"Attendances",R.id.nav_manage);
+                }
+            });
+
+            compliment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragment = new ComplimentFragment();
+                    ((Dashboard)getActivity()).FragmentTransction(fragment,"Complaint",R.id.nav_complain);
+                }
+            });
+
+            notes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragment = new Note();
+                    ((Dashboard)getActivity()).FragmentTransction(fragment,"Notes",R.id.nav_notes);
+                }
+            });
+            profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragment = new ProfileFregment();
+                    ((Dashboard)getActivity()).FragmentTransction(fragment,"Profile",R.id.nav_profile);
+                }
+            });
+
+            result.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment fragment = new ResultFragment();
+                    ((Dashboard)getActivity()).FragmentTransction(fragment,"Result",R.id.nav_result);
+                }
+            });
             homework.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -117,7 +192,9 @@ public class FragmentDashborad extends Fragment {
 
             @Override
             public void onFailure(Call<Notice> call, Throwable t) {
-                Log.d("noticeerror",t.getMessage());
+                if(t instanceof SocketTimeoutException){
+                    Toast.makeText(getActivity(), "Connection Timeout!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

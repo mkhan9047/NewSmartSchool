@@ -15,6 +15,7 @@ import java.util.List;
 import notification.push.com.smartschool.Dialog.NoticeDialogFragment;
 import notification.push.com.smartschool.Models.Notice;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Helper;
 
 /**
  * Created by Mujahid on 5/24/2018.
@@ -37,8 +38,8 @@ public class NoticeRecycleAdapter extends RecyclerView.Adapter<NoticeRecycleAdap
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.indicate.setText(String.valueOf(position+1));
-        holder.title.setText(notices.get(position).getNotice_title());
-        holder.description.setText(notices.get(position).getMessage());
+        holder.title.setText(Helper.getAbsolute(notices.get(position).getNotice_title()));
+        holder.description.setText(Helper.getAbsolute(notices.get(position).getMessage()));
         holder.date.setText(notices.get(position).getNotice_date());
     }
 

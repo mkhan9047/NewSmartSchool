@@ -36,7 +36,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/school_logo"
+                android:src="@drawable/sc_logo"
                 android:layout_gravity="center_horizontal"
                 />
             <TextView
@@ -109,19 +109,6 @@
                 android:layout_marginTop="24dp"
                 android:padding="10dp"
                 android:text="Login"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forgot Password?"
-                android:layout_gravity="end"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="2dp"
-                android:clickable="true"
-                android:textColor="@color/bg"
-                android:textSize="15sp"
-                android:id="@+id/txt_forgot_pass"
-                android:layout_marginBottom="16dp"
-                android:focusable="true" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

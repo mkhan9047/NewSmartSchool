@@ -55,5 +55,12 @@
                 android:title="Log Out" />
         </menu>
     </item>
-
+<item android:title="Developer">
+<menu>
+    <item android:id="@+id/nav_about"
+        android:icon="@drawable/ic_feesmenu"
+        android:title="About">
+    </item>
+</menu>
+</item>
 </menu>

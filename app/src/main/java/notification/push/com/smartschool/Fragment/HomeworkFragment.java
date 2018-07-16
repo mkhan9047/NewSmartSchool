@@ -11,7 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import java.net.SocketTimeoutException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import notification.push.com.smartschool.Models.Notes;
 import notification.push.com.smartschool.Networking.RetrofitClient;
 import notification.push.com.smartschool.Networking.RetrofitInterface;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Helper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,12 +68,18 @@ public class HomeworkFragment extends Fragment {
             recyclerView.setHasFixedSize(true);
         }
         homework = new ArrayList<>();
-        onDataCall();
+
+        if(Helper.isInternetAvaiable(getActivity())){
+            onDataCall();
+        }else{
+            Toast.makeText(getActivity(), "No Internet!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void onDataCall() {
+
         final ProgressDialog dailog = new ProgressDialog(getActivity());
-        dailog.setMessage("Getting Homeworks....");
+        dailog.setMessage("Getting Homework's....");
         dailog.show();
         Stroage stroage = new Stroage(getActivity());
         RetrofitInterface retrofitInterface = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
@@ -78,7 +87,9 @@ public class HomeworkFragment extends Fragment {
         homeworkCall.enqueue(new Callback<Homework>() {
             @Override
             public void onResponse(Call<Homework> call, Response<Homework> response) {
+
                 Homework work = response.body();
+
                 if(work != null){
                     homework = work.getHomeworks();
                     @SuppressLint("SimpleDateFormat")
@@ -97,15 +108,19 @@ public class HomeworkFragment extends Fragment {
 
                     adapter = new HomeworkAdapter(homework, getFragmentManager(), getActivity());
                     recyclerView.setAdapter(adapter);
+
                     if(dailog.isShowing()){
                         dailog.dismiss();
                     }
                 }
+
             }
 
             @Override
             public void onFailure(Call<Homework> call, Throwable t) {
-
+                if(t instanceof SocketTimeoutException){
+                    Toast.makeText(getActivity(), "Connection Timeout!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

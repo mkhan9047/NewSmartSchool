@@ -2,13 +2,20 @@ package notification.push.com.smartschool.Networking;
 
 import java.util.List;
 
+import notification.push.com.smartschool.Models.Attendence;
+import notification.push.com.smartschool.Models.Fee;
 import notification.push.com.smartschool.Models.Holidays;
 import notification.push.com.smartschool.Models.Homework;
 import notification.push.com.smartschool.Models.LogIn;
 import notification.push.com.smartschool.Models.Notes;
 import notification.push.com.smartschool.Models.Notice;
+import notification.push.com.smartschool.Models.OtherFee;
+import notification.push.com.smartschool.Models.PostComplaint;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -31,5 +38,23 @@ public interface RetrofitInterface {
 
     @GET("api/holidays.php")
     Call<Holidays> getHolidays();
+
+    @GET("api/attendence.php")
+    Call<Attendence> getAttendence(@Query("reg_no") String reg);
+
+    @GET("api/student_fee.php")
+    Call<Fee> getStudentFees(@Query("reg_no") String reg);
+
+
+    @GET("api/complaint.php")
+    Call<PostComplaint> postComplaintData(@Query("reg_no") String reg_no,
+                                          @Query("message_subject") String messageSubject,
+                                          @Query("message_body") String messageBody,
+                                          @Query("complaint_date") String date,
+                                          @Query("complaint_time") String time
+                                          );
+
+    @GET("api/other_fee.php")
+    Call<OtherFee> getOtherFee(@Query("reg_no") String reg);
 
 }

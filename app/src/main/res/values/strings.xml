@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Smart School</string>
+    <string name="app_name">Doon Srinagar</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_dashboard">Dashboard</string>
 
@@ -8,4 +8,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="spinner_fee">
+        <item>Monthly Fees</item>
+        <item>Other Fees</item>
+    </string-array>
 </resources>

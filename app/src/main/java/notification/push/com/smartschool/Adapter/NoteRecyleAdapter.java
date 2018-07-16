@@ -17,6 +17,7 @@ import java.util.List;
 import notification.push.com.smartschool.Dialog.NoteDailogFragment;
 import notification.push.com.smartschool.Models.Notes;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Helper;
 
 /**
  * Created by Mujahid on 5/26/2018.
@@ -43,9 +44,9 @@ public class NoteRecyleAdapter extends RecyclerView.Adapter<NoteRecyleAdapter.My
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.indicate.setText(String.valueOf(position + 1));
-        holder.title.setText(notes.get(position).getNote_title());
-        holder.description.setText(notes.get(position).getMessage());
-        holder.teacher_name.setText(notes.get(position).getTeacher_name());
+        holder.title.setText(Helper.getAbsolute(notes.get(position).getNote_title()));
+        holder.description.setText(Helper.getAbsolute(notes.get(position).getMessage()));
+        holder.teacher_name.setText(Helper.getAbsolute(notes.get(position).getTeacher_name()));
         holder.date.setText(notes.get(position).getNote_date());
     }
 

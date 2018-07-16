@@ -51,7 +51,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.MyView
     holder.id.setText(String.valueOf(position+1));
     holder.des.setText(Helper.getAbsolute(homeworks.get(position).getHomework_detail()));
     holder.date.setText(homeworks.get(position).getHomework_date());
-    holder.teacher_name.setText(String.format("From: %s",homeworks.get(position).getTeacher_name()));
+    holder.teacher_name.setText(String.format("From: %s",Helper.getAbsolute(homeworks.get(position).getTeacher_name())));
     if(homeworks.get(position).getFile_name().length()>0){
         holder.download.setVisibility(View.VISIBLE);
     }

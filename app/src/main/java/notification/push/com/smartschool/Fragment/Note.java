@@ -2,6 +2,7 @@ package notification.push.com.smartschool.Fragment;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.net.SocketTimeoutException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ import notification.push.com.smartschool.Models.Notice;
 import notification.push.com.smartschool.Networking.RetrofitClient;
 import notification.push.com.smartschool.Networking.RetrofitInterface;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Helper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,7 +72,11 @@ public class Note extends Fragment {
             recyclerView.setHasFixedSize(true);
         }
         items = new ArrayList<>();
-        onDataLoad();
+        if(Helper.isInternetAvaiable(getActivity())){
+          onDataLoad();
+        }else{
+            Toast.makeText(getActivity(), "No Internet!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -99,8 +106,12 @@ public class Note extends Fragment {
                            return 0;
                        }
                    });
-                   adapter = new NoteRecyleAdapter(items, getActivity().getApplicationContext(),getFragmentManager());
-                   recyclerView.setAdapter(adapter);
+                   Activity activity = getActivity();
+                   if(activity != null){
+                       adapter = new NoteRecyleAdapter(items, activity.getApplicationContext(),getFragmentManager());
+                       recyclerView.setAdapter(adapter);
+                   }
+
                    if(dailog.isShowing()){
                        dailog.dismiss();
                    }
@@ -109,7 +120,10 @@ public class Note extends Fragment {
 
            @Override
            public void onFailure(Call<Notes> call, Throwable t) {
-                Log.d("noteFail",t.getMessage());
+               Log.d("error",t.getMessage());
+               if(t instanceof SocketTimeoutException){
+                   Toast.makeText(getActivity(), "Connection Timeout!", Toast.LENGTH_SHORT).show();
+               }
            }
        });
     }

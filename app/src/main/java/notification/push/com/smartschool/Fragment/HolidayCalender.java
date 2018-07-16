@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
 
+import java.net.SocketTimeoutException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -65,8 +66,12 @@ public class HolidayCalender extends Fragment {
         args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
         args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
         caldroidFragment.setArguments(args);
+if(Helper.isInternetAvaiable(getActivity())){
+    getHolidDays();
+}else{
+    Toast.makeText(getActivity(), "No Internet!", Toast.LENGTH_SHORT).show();
+}
 
-        getHolidDays();
 
         background = new HashMap<>();
        // blue = new ColorDrawable(R);
@@ -80,27 +85,31 @@ public class HolidayCalender extends Fragment {
             public void onSelectDate(Date date, View view) {
                 @SuppressLint("SimpleDateFormat")
                 SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-
-                for(int i = 0; i < holidays.getHolidays().size(); i++){
-                    try {
-                        if(formater.parse(holidays.getHolidays().get(i).getFrom_date()).equals(formater.parse(holidays.getHolidays().get(i).getTo_date()))){
-                            try {
-                                if(formater.parse(holidays.getHolidays().get(i).getFrom_date()).equals(date)){
-                                    dialog(holidays.getHolidays().get(i).getHoliday_name(),holidays.getHolidays().get(i).getFrom_date(),holidays.getHolidays().get(i).getHoliday_name());
-                                }
-                            } catch (ParseException e) {
-
-                                e.printStackTrace();
-                            }
-                        }else{
-                            if(date.after(formater.parse(holidays.getHolidays().get(i).getFrom_date())) && date.before(formater.parse(holidays.getHolidays().get(i).getTo_date()))){
-                               dialog(holidays.getHolidays().get(i).getHoliday_name(),holidays.getHolidays().get(i).getFrom_date(),holidays.getHolidays().get(i).getTo_date(),holidays.getHolidays().get(i).getHoliday_name());
-                            }
-                        }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
+if(holidays!=null){
+    for(int i = 0; i < holidays.getHolidays().size(); i++){
+        try {
+            if(formater.parse(holidays.getHolidays().get(i).getFrom_date()).equals(formater.parse(holidays.getHolidays().get(i).getTo_date()))){
+                try {
+                    if(formater.parse(holidays.getHolidays().get(i).getFrom_date()).equals(date)){
+                        dialog(holidays.getHolidays().get(i).getHoliday_name(),holidays.getHolidays().get(i).getFrom_date(),holidays.getHolidays().get(i).getHoliday_name());
                     }
+                } catch (ParseException e) {
+
+                    e.printStackTrace();
                 }
+            }else{
+                if(date.after(formater.parse(holidays.getHolidays().get(i).getFrom_date())) && date.before(formater.parse(holidays.getHolidays().get(i).getTo_date()))){
+                    dialog(holidays.getHolidays().get(i).getHoliday_name(),holidays.getHolidays().get(i).getFrom_date(),holidays.getHolidays().get(i).getTo_date(),holidays.getHolidays().get(i).getHoliday_name());
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}else{
+    Toast.makeText(getActivity(), "No Data available!", Toast.LENGTH_SHORT).show();
+}
+
             }
         });
         caldroidFragment.refreshView();
@@ -122,7 +131,11 @@ public class HolidayCalender extends Fragment {
 
                     for (Date d : dates) {
 
-                        background.put(d, getResources().getDrawable(R.drawable.date_marker));
+
+                        if(isAdded()){
+                            background.put(d, getResources().getDrawable(R.drawable.date_marker));
+                        }
+
 
                     }
 
@@ -134,7 +147,9 @@ public class HolidayCalender extends Fragment {
 
             @Override
             public void onFailure(Call<Holidays> call, Throwable t) {
-                Log.d("HolidayError", t.getMessage());
+                if(t instanceof SocketTimeoutException){
+                    Toast.makeText(getActivity(), "Connection Timeout!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -143,8 +158,8 @@ public class HolidayCalender extends Fragment {
     void dialog(String Title, String date, String oca) {
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(getActivity());
         //alt_bld.setIcon(R.drawable.icon);
-        alt_bld.setTitle(Title);
-        alt_bld.setMessage(String.format("All term of the School will be off on %s for %s\n\n Total Off Days: %d",date, oca,1));
+        alt_bld.setTitle(Helper.getAbsolute(Title));
+        alt_bld.setMessage(String.format("All term of the School will be off on %s for %s\n\n Total Off Days: %d",date, Helper.getAbsolute(oca),1));
 
         alt_bld.setNeutralButton("Done", new DialogInterface.OnClickListener() {
             @Override
@@ -163,7 +178,7 @@ public class HolidayCalender extends Fragment {
         Date to = null;
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(getActivity());
         //alt_bld.setIcon(R.drawable.icon);
-        alt_bld.setTitle(Title);
+        alt_bld.setTitle(Helper.getAbsolute(Title));
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -172,7 +187,7 @@ public class HolidayCalender extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        alt_bld.setMessage(String.format("All term of the School will be off from %s to %s for %s. \n\n Total Off Days: %d",fromDate,toDate,oca,Helper.getDifferenceDays(from,to)));
+        alt_bld.setMessage(String.format("All term of the School will be off from %s to %s for %s. \n\n Total Off Days: %d",fromDate,toDate,Helper.getAbsolute(oca),Helper.getDifferenceDays(from,to)));
 
 
        alt_bld.setNeutralButton("Done", new DialogInterface.OnClickListener() {

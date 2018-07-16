@@ -15,7 +15,6 @@ public class Stroage {
     private static final int NOTICE_COUNT = 0;
     private static final boolean NOTICE_STATE = false;
     private static final int NOTICE_HOLDER = 0;
-
     private static final int HOMEWORK_COUNT = 0;
     private static final boolean HOMEWORK_STATE = false;
     private  static final int HOMEWORK_HOLDER = 0;

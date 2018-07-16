@@ -6,7 +6,47 @@
     android:orientation="vertical"
     tools:context="notification.push.com.smartschool.Fragment.FragmentDashborad">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:elevation="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="10dp"
+        android:layout_margin="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="false"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/login_indication"
+                android:textColor="#FFFF"
+                android:textSize="17sp"
+                android:text="Logged In As Mujahid Khan"
+                />
+
+        </FrameLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,41 +61,63 @@
             android:orientation="vertical"
             android:layout_margin="2dp"
             android:layout_height="wrap_content">
-            <android.support.v7.widget.CardView
-                android:id="@+id/homework"
-                android:layout_width="80dp"
-                android:layout_margin="10dp"
-                android:layout_height="80dp"
-                android:shape="ring"
-                android:elevation="8dp"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0.0px"
-                android:clipToPadding="false"
-                android:clipChildren="false"
-                app:cardElevation="10dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
-                <LinearLayout
-                    android:layout_margin="3dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
 
-                    >
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="@drawable/shapeaccentcircle"
-                        android:padding="25dp"
-                        android:src="@drawable/homework" />
-                </LinearLayout>
+               <TextView
+                   android:id="@+id/home_indicator"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentEnd="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_gravity="end"
+                   android:background="@android:drawable/ic_notification_overlay"
+                   android:gravity="center"
+                   android:text="0"
+                   android:textColor="#FFF"
+                   android:textSize="15sp"
+                   android:textStyle="bold" />
+               <android.support.v7.widget.CardView
+                   android:id="@+id/homework"
+                   android:layout_width="80dp"
+                   android:layout_margin="10dp"
+                   android:layout_height="80dp"
+                   android:shape="ring"
+                   android:elevation="8dp"
+                   android:divider="@android:color/transparent"
+                   android:dividerHeight="0.0px"
+                   android:clipToPadding="false"
+                   android:clipChildren="false"
+                   app:cardElevation="10dp"
+                   android:foreground="?android:attr/selectableItemBackground"
+                   android:clickable="true"
+                   app:cardCornerRadius="40dp"
+                   app:cardPreventCornerOverlap="false"
+                   android:focusable="true">
+                   <LinearLayout
+                       android:layout_margin="3dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical"
 
 
-            </android.support.v7.widget.CardView>
+                       >
+
+                       <ImageView
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:layout_gravity="center"
+                           android:background="@drawable/shapeaccentcircle"
+                           android:padding="25dp"
+                           android:src="@drawable/homework" />
+                   </LinearLayout>
+
+
+               </android.support.v7.widget.CardView>
+           </RelativeLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,12 +125,14 @@
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"
                 />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
+
             <android.support.v7.widget.CardView
                 android:id="@+id/notice"
                 android:layout_width="80dp"
@@ -84,13 +148,14 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
+
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-
                     >
 
                     <ImageView
@@ -100,10 +165,10 @@
                         android:background="@drawable/purple_cirlce_shape"
                         android:padding="25dp"
                         android:src="@drawable/notifications" />
+
                 </LinearLayout>
-
-
             </android.support.v7.widget.CardView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,6 +176,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"
                 />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -118,7 +184,7 @@
             android:layout_margin="2dp"
             android:layout_height="wrap_content">
             <android.support.v7.widget.CardView
-                android:id="@+id/profile"
+                android:id="@+id/das_profile"
                 android:layout_width="80dp"
                 android:layout_margin="10dp"
                 android:layout_height="80dp"
@@ -132,7 +198,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
@@ -147,7 +214,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/ornage_shape_circle"
                         android:padding="25dp"
-                        android:src="@drawable/ic_profile" />
+                        android:src="@drawable/ic_person_black_24dp" />
                 </LinearLayout>
 
 
@@ -177,7 +244,7 @@
             android:layout_margin="2dp"
             android:layout_height="wrap_content">
             <android.support.v7.widget.CardView
-                android:id="@+id/result"
+                android:id="@+id/das_result"
                 android:layout_width="80dp"
                 android:layout_margin="10dp"
                 android:layout_height="80dp"
@@ -191,7 +258,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
@@ -225,7 +293,7 @@
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
             <android.support.v7.widget.CardView
-                android:id="@+id/holiday"
+                android:id="@+id/das_holiday"
                 android:layout_width="80dp"
                 android:layout_margin="10dp"
                 android:layout_height="80dp"
@@ -239,7 +307,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
@@ -273,7 +342,7 @@
             android:layout_margin="2dp"
             android:layout_height="wrap_content">
             <android.support.v7.widget.CardView
-                android:id="@+id/attendence"
+                android:id="@+id/das_attendence"
                 android:layout_width="80dp"
                 android:layout_margin="10dp"
                 android:layout_height="80dp"
@@ -287,7 +356,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
@@ -334,7 +404,7 @@
             android:layout_margin="2dp"
             android:layout_height="wrap_content">
             <android.support.v7.widget.CardView
-                android:id="@+id/notes"
+                android:id="@+id/das_notes"
                 android:layout_width="80dp"
                 android:layout_margin="10dp"
                 android:layout_height="80dp"
@@ -348,7 +418,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
@@ -382,7 +453,7 @@
             android:layout_margin="5dp"
             android:layout_height="wrap_content">
             <android.support.v7.widget.CardView
-                android:id="@+id/fees"
+                android:id="@+id/das_fees"
                 android:layout_width="80dp"
                 android:layout_margin="10dp"
                 android:layout_height="80dp"
@@ -396,7 +467,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
@@ -429,8 +501,9 @@
             android:orientation="vertical"
             android:layout_margin="2dp"
             android:layout_height="wrap_content">
+
             <android.support.v7.widget.CardView
-                android:id="@+id/complaint"
+                android:id="@+id/das_complaint"
                 android:layout_width="80dp"
                 android:layout_margin="10dp"
                 android:layout_height="80dp"
@@ -444,7 +517,8 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 app:cardCornerRadius="40dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardPreventCornerOverlap="false"
+                android:focusable="true">
                 <LinearLayout
                     android:layout_margin="3dp"
                     android:layout_width="match_parent"
@@ -464,6 +538,7 @@
 
 
             </android.support.v7.widget.CardView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -471,6 +546,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"
                 />
+
         </LinearLayout>
 
     </LinearLayout>
