@@ -55,14 +55,14 @@ public class HomeworkDialogFragment extends DialogFragment {
         note_from = in.findViewById(R.id.dg_homework_from);
         note_to = in.findViewById(R.id.dg_homework_to);
         note_date = in.findViewById(R.id.dg_homework_date);
-        note_sending_date = in.findViewById(R.id.dg_homework_sending_date);
+        //note_sending_date = in.findViewById(R.id.dg_homework_sending_date);
 
         note_id.setText(String.format("Homework ID: %d",items.getHomework_id()));
         note_message.setText(Helper.getAbsolute(items.getHomework_detail()));
         note_from.setText(String.format("%s",items.getTeacher_name()));
         note_to.setText(String.format("%s",stroage.GetCurentUser()));
         note_date.setText(String.format("%s",items.getHomework_date()));
-        note_sending_date.setText(String.format("%s",items.getCreated_date()));
+        //note_sending_date.setText(String.format("%s",items.getCreated_date()));
 
 
         builder.setView(in);

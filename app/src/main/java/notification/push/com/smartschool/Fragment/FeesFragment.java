@@ -67,7 +67,7 @@ public class FeesFragment extends Fragment {
         fragment = new Monthly_fee();
         FragmentTransition();
         MaterialSpinner MTspinner = (MaterialSpinner) getView().findViewById(R.id.spinner);
-        MTspinner.setItems("Monthly Fee", "Other Fee");
+        MTspinner.setItems("Monthly Fee", "Other Fee", "Bus Fee");
         MTspinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
             @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
@@ -79,6 +79,10 @@ public class FeesFragment extends Fragment {
                         break;
                     case 1:
                         fragment = new OtherFee();
+                        FragmentTransition();
+                        break;
+                    case 2:
+                        fragment = new BusFee();
                         FragmentTransition();
                         break;
                 }

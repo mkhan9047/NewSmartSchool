@@ -2,6 +2,7 @@ package notification.push.com.smartschool.Fragment;
 
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -117,6 +118,9 @@ if(holidays!=null){
     }
 
     private void getHolidDays() {
+        final ProgressDialog dialog = new ProgressDialog(getActivity());
+        dialog.setMessage("Getting Holidays....");
+        dialog.setCancelable(false);
         RetrofitInterface retrofitInterface = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         Call<Holidays> holidaysCall = retrofitInterface.getHolidays();
         holidaysCall.enqueue(new Callback<Holidays>() {
@@ -141,7 +145,9 @@ if(holidays!=null){
 
                     caldroidFragment.setBackgroundDrawableForDates(background);
                     caldroidFragment.refreshView();
-
+                if(dialog.isShowing()){
+                    dialog.dismiss();
+                }
                 }
             }
 

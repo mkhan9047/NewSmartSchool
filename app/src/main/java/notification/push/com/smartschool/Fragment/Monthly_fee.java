@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import retrofit2.Response;
  */
 public class Monthly_fee extends Fragment {
     TextView year, jan, fab, mar, apr, may, jun, jul, aug, sep, oct, nov, name, dec;
+    CardView janCard, fabCard, marCard, aprCard, mayCard, junCard, julCard, augCard, sepCard, octCard, novCard, decCard;
 
     public Monthly_fee() {
         // Required empty public constructor
@@ -60,6 +62,18 @@ public class Monthly_fee extends Fragment {
             nov = view.findViewById(R.id.nov_fee);
             dec = view.findViewById(R.id.dec_fee);
 
+            janCard = view.findViewById(R.id.jan_card);
+            fabCard = view.findViewById(R.id.feb_card);
+            marCard = view.findViewById(R.id.mar_card);
+            aprCard = view.findViewById(R.id.apr_card);
+            mayCard = view.findViewById(R.id.may_card);
+            junCard = view.findViewById(R.id.jun_card);
+            julCard = view.findViewById(R.id.jul_card);
+            augCard = view.findViewById(R.id.aug_card);
+            sepCard = view.findViewById(R.id.sep_card);
+            octCard = view.findViewById(R.id.oct_card);
+            novCard = view.findViewById(R.id.nov_card);
+            decCard = view.findViewById(R.id.dec_card);
         }
     }
 
@@ -77,20 +91,70 @@ public class Monthly_fee extends Fragment {
             @Override
             public void onResponse(Call<Fee> call, Response<Fee> response) {
                 Fee fee = response.body();
+
                 if(fee != null){
                    // year.setText(String.format("Year: %d",fee.getYear()));
-                    jan.setText(String.format("RS %d", fee.getJan()));
-                    fab.setText(String.format("RS %d", fee.getFeb()));
-                    mar.setText(String.format("RS %d", fee.getMar()));
-                    apr.setText(String.format("RS %d", fee.getArp()));
-                    may.setText(String.format("RS %d", fee.getMay()));
-                    jun.setText(String.format("RS %d", fee.getJun()));
-                    jul.setText(String.format("RS %d", fee.getJul()));
-                    aug.setText(String.format("RS %d", fee.getAug()));
-                    sep.setText(String.format("RS %d", fee.getSep()));
-                    oct.setText(String.format("RS %d", fee.getOct()));
-                    nov.setText(String.format("RS %d", fee.getNov()));
-                    dec.setText(String.format("RS %d", fee.getDec()));
+
+                   if(fee.getJan() == 1){
+
+                   jan.setText("PAID");
+                       janCard.setVisibility(View.VISIBLE);
+                   }
+                    if(fee.getFeb() == 1){
+                        fab.setText("PAID");
+                        fabCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getMar() == 1){
+                        mar.setText("PAID");
+                        marCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getArp() == 1){
+                        apr.setText("PAID");
+                        aprCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getMay() == 1){
+                        may.setText("PAID");
+                        mayCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getJun() == 1){
+                        jun.setText("PAID");
+                        junCard.setVisibility(View.VISIBLE);
+                    }
+                    if(fee.getJul() == 1){
+                        jul.setText("PAID");
+                        julCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getAug() == 1){
+                        aug.setText("PAID");
+                        augCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getSep() == 1){
+                        sep.setText("PAID");
+                        sepCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getOct() == 1){
+                        oct.setText("PAID");
+                        octCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getNov() == 1){
+                        nov.setText("PAID");
+                        novCard.setVisibility(View.VISIBLE);
+                    }
+
+                    if(fee.getDec() == 1){
+                        dec.setText("PAID");
+                        decCard.setVisibility(View.VISIBLE);
+                    }
+
+
 
                 }
                 if(progressDialog.isShowing()){

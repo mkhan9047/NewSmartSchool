@@ -2,8 +2,10 @@ package notification.push.com.smartschool.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -22,10 +24,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import notification.push.com.smartschool.Dialog.NoteDailogFragment;
 import notification.push.com.smartschool.Fragment.AttendenceFragment;
+import notification.push.com.smartschool.Fragment.ChangePassword;
 import notification.push.com.smartschool.Fragment.ComplimentFragment;
 import notification.push.com.smartschool.Fragment.FeesFragment;
 import notification.push.com.smartschool.Fragment.FragmentDashborad;
@@ -38,6 +44,7 @@ import notification.push.com.smartschool.Fragment.ResultFragment;
 import notification.push.com.smartschool.LocalStroage.Stroage;
 import notification.push.com.smartschool.Models.Student;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Constants;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,6 +53,7 @@ public class Dashboard extends AppCompatActivity
     TextView user_name, user_reg;
     Stroage stroage;
     Fragment currentFragment;
+    CircleImageView profile;
     NavigationView navigationView;
 
     @Override
@@ -54,7 +62,7 @@ public class Dashboard extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 /*
         Intent i = getIntent();
         student = (Student) i.getSerializableExtra("profile");
@@ -73,6 +81,13 @@ public class Dashboard extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         user_name = header.findViewById(R.id.user_name);
         user_reg = header.findViewById(R.id.user_reg);
+        profile = header.findViewById(R.id.profile_image);
+        Stroage stroage = new Stroage(this);
+        if(!isDestroyed()){
+            Glide.with(Dashboard.this).load(Constants.base_stu_img + stroage.GetStudentPhoto()).into(profile);
+        }
+
+      //  Log.d("student_photo",stroage.GetStudentPhoto());
         user_name.setText(stroage.GetCurentUser());
         user_reg.setText(stroage.GetCurentUserReg());
         navigationView.setNavigationItemSelectedListener(this);
@@ -196,12 +211,13 @@ public class Dashboard extends AppCompatActivity
             if(getSupportActionBar()!=null){
                 getSupportActionBar().setTitle("Holidays");
             }
-        }else if(id == R.id.nav_profile){
-            currentFragment = new ProfileFregment();
+        }else if(id == R.id.nav_changePass){
+            currentFragment = new ChangePassword();
             FragmentTransction();
             if(getSupportActionBar()!=null){
-                getSupportActionBar().setTitle("Profile");
+                getSupportActionBar().setTitle("Change Password");
             }
+
         }else if(id==R.id.nav_result){
             currentFragment = new ResultFragment();
             FragmentTransction();
@@ -222,6 +238,9 @@ public class Dashboard extends AppCompatActivity
             }
         }else if(id == R.id.nav_about){
             Intent intent = new Intent(this, About.class);
+            startActivity(intent);
+        }else if(id == R.id.nav_profile){
+            Intent intent = new Intent(this, Profile.class);
             startActivity(intent);
         }
 

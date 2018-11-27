@@ -18,7 +18,8 @@ public class Stroage {
     private static final int HOMEWORK_COUNT = 0;
     private static final boolean HOMEWORK_STATE = false;
     private  static final int HOMEWORK_HOLDER = 0;
-
+    private static final String STUDENT_PHOTO = "2.jpg";
+    private static final String STUDENT_PASSWORD = "student2018";
 
     private Context context;
 
@@ -109,5 +110,22 @@ public class Stroage {
         return getsharedPreferences().getInt("holder",HOMEWORK_HOLDER);
     }
 
+
+
+    public void SaveStudentPhoto(String s){
+        getPreferencesEditor().putString("p",s).commit();
+    }
+
+    public String GetStudentPhoto(){
+        return getsharedPreferences().getString("p",STUDENT_PHOTO);
+    }
+
+    public void SavePassword(String s){
+        getPreferencesEditor().putString("password",s).commit();
+    }
+
+    public String GetPassword(){
+        return getsharedPreferences().getString("password",STUDENT_PASSWORD);
+    }
 
 }

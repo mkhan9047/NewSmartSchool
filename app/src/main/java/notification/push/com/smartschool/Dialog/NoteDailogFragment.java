@@ -53,7 +53,7 @@ public class NoteDailogFragment extends android.support.v4.app.DialogFragment{
         note_from = in.findViewById(R.id.dg_homework_from);
         note_to = in.findViewById(R.id.dg_homework_to);
         note_date = in.findViewById(R.id.dg_homework_date);
-        note_sending_date = in.findViewById(R.id.dg_homework_sending_date);
+       // note_sending_date = in.findViewById(R.id.dg_homework_sending_date);
 
         note_id.setText(String.format("Note ID: %d",items.getNote_id()));
         note_title.setText(items.getNote_title());
@@ -61,7 +61,7 @@ public class NoteDailogFragment extends android.support.v4.app.DialogFragment{
         note_from.setText(String.format("%s",items.getTeacher_name()));
         note_to.setText(String.format("%s",stroage.GetCurentUser()));
         note_date.setText(String.format("%s",items.getNote_date()));
-        note_sending_date.setText(String.format("%s",items.getCreated_date()));
+      //  note_sending_date.setText(String.format("%s",items.getCreated_date()));
 
 
         builder.setView(in);

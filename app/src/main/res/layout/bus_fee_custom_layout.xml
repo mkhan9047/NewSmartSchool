@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/fee_type"
+                android:id="@+id/bus_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -42,7 +42,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/fee_status"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
                 android:layout_marginEnd="16dp"

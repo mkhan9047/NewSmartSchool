@@ -26,8 +26,10 @@
                 android:clickable="true"
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
+                android:visibility="gone"
                 android:focusable="true"
                 app:cardBackgroundColor="@color/colorAccent"
+                android:id="@+id/jan_card"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
@@ -57,7 +59,7 @@
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
                         android:id="@+id/jan_fee"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:textColor="#FFFF"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -79,6 +81,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/feb_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -107,7 +111,7 @@
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
                         android:id="@+id/feb_fee"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:textColor="#FFFF"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -129,6 +133,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/mar_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -157,7 +163,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:textColor="#FFFF"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -179,6 +185,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/apr_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -206,7 +214,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:id="@+id/apr_fee"
                         android:textColor="#FFFF"
                         android:textSize="20sp"
@@ -229,6 +237,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/may_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -257,7 +267,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:id="@+id/may_fee"
                         android:textColor="#FFFF"
                         android:textSize="20sp"
@@ -280,6 +290,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:visibility="gone"
+                android:id="@+id/jun_card"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -307,7 +319,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:id="@+id/jun_fee"
                         android:textColor="#FFFF"
                         android:textSize="20sp"
@@ -330,6 +342,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/jul_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -357,7 +371,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:id="@+id/jul_fee"
                         android:textColor="#FFFF"
                         android:textSize="20sp"
@@ -380,6 +394,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/aug_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -407,7 +423,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:textColor="#FFFF"
                         android:textSize="20sp"
                         android:id="@+id/aug_fee"
@@ -429,7 +445,9 @@
                 android:clickable="true"
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
+                android:id="@+id/sep_card"
                 android:focusable="true"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -457,7 +475,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:id="@+id/sep_fee"
                         android:textColor="#FFFF"
                         android:textSize="20sp"
@@ -480,6 +498,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/oct_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -508,7 +528,7 @@
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
                         android:id="@+id/oct_fee"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:textColor="#FFFF"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -530,6 +550,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:id="@+id/nov_card"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -557,7 +579,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:textColor="#FFFF"
                         android:textSize="20sp"
                         android:id="@+id/nov_fee"
@@ -580,6 +602,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardPreventCornerOverlap="false"
                 android:focusable="true"
+                android:visibility="gone"
+                android:id="@+id/dec_card"
                 app:cardBackgroundColor="@color/colorAccent"
                 android:layout_height="wrap_content">
 
@@ -607,7 +631,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="16dp"
                         android:padding="10dp"
-                        android:text="RS 000 "
+                        android:text=" "
                         android:id="@+id/dec_fee"
                         android:textColor="#FFFF"
                         android:textSize="20sp"

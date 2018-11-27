@@ -8,6 +8,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="grand_total">Grand Total</string>
 
     <string-array name="spinner_fee">
         <item>Monthly Fees</item>

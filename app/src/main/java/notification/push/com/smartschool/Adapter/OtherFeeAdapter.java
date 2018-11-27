@@ -1,6 +1,7 @@
 package notification.push.com.smartschool.Adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import notification.push.com.smartschool.Models.OtherFee;
 import notification.push.com.smartschool.R;
+import notification.push.com.smartschool.Utility.Helper;
 
 /**
  * Created by Mujahid on 7/16/2018.
@@ -18,11 +20,11 @@ import notification.push.com.smartschool.R;
 
 public class OtherFeeAdapter extends RecyclerView.Adapter<OtherFeeAdapter.ViewHolder> {
 
-    public OtherFeeAdapter(List<OtherFee.Fees> feeList) {
+    public OtherFeeAdapter(List<String> feeList) {
         this.feeList = feeList;
     }
 
-    private List<OtherFee.Fees> feeList = new ArrayList<>();
+    private List<String> feeList = new ArrayList<>();
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,17 +35,15 @@ public class OtherFeeAdapter extends RecyclerView.Adapter<OtherFeeAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.fee_name.setText(feeList.get(position).getFee_name());
+    holder.fee_name.setText(Helper.FirstPart(feeList.get(position)));
+    if(TextUtils.isDigitsOnly(Helper.SecondPart(feeList.get(position)))){
+        holder.fee_status.setText(Helper.KFormat(Double.parseDouble(Helper.SecondPart(feeList.get(position)))));
+    }else{
+        holder.fee_status.setText(Helper.SecondPart(feeList.get(position)));
+    }
 
-        if(feeList.get(position).getStatus()==0){
 
-            holder.fee_status.setText("UNPAID");
 
-        }else if(feeList.get(position).getStatus()==1){
-
-            holder.fee_status.setText("PAID");
-
-        }
     }
 
     @Override

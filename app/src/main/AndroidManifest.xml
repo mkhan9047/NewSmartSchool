@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.Profile" android:parentActivityName=".Activity.Dashboard" />
+        <activity android:name=".Activity.Profile" android:theme="@style/AppTheme.NoActionBar" android:parentActivityName=".Activity.Dashboard" />
         <activity android:name=".Activity.About" android:parentActivityName=".Activity.Dashboard"/>
     </application>
 

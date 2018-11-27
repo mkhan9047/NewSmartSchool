@@ -24,6 +24,7 @@ import notification.push.com.smartschool.Utility.Helper;
 public class NoticeRecycleAdapter extends RecyclerView.Adapter<NoticeRecycleAdapter.MyViewHolder> {
     private List<Notice.Items> notices = new ArrayList<>();
     private FragmentManager manage;
+
     public NoticeRecycleAdapter(List<Notice.Items> notices, FragmentManager manage) {
         this.notices = notices;
         this.manage = manage;

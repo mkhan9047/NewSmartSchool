@@ -3,14 +3,19 @@ package notification.push.com.smartschool.Networking;
 import java.util.List;
 
 import notification.push.com.smartschool.Models.Attendence;
+import notification.push.com.smartschool.Models.Bus;
+import notification.push.com.smartschool.Models.Exam;
 import notification.push.com.smartschool.Models.Fee;
 import notification.push.com.smartschool.Models.Holidays;
 import notification.push.com.smartschool.Models.Homework;
 import notification.push.com.smartschool.Models.LogIn;
+import notification.push.com.smartschool.Models.Marks;
 import notification.push.com.smartschool.Models.Notes;
 import notification.push.com.smartschool.Models.Notice;
 import notification.push.com.smartschool.Models.OtherFee;
+import notification.push.com.smartschool.Models.PassChange;
 import notification.push.com.smartschool.Models.PostComplaint;
+import notification.push.com.smartschool.Models.Student;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -55,6 +60,20 @@ public interface RetrofitInterface {
                                           );
 
     @GET("api/other_fee.php")
-    Call<OtherFee> getOtherFee(@Query("reg_no") String reg);
+    Call<List<String>> getOtherFee(@Query("reg_no") String reg);
 
+    @GET("api/GetExamNames.php")
+    Call<Exam> getExamNames(@Query("reg_no") String reg);
+
+    @GET("api/getResult.php")
+    Call<Marks> getMarks(@Query("reg_no") String reg_no, @Query("exam_type") String exam_type);
+
+    @GET("api/profile.php")
+    Call<Student> getStudentInfo(@Query("reg_no") String reg);
+
+    @GET("api/bus_fee.php")
+    Call<Bus> getBusFee(@Query("reg_no") String reg);
+
+    @GET("api/change_password.php")
+    Call<PassChange> getChangedPass(@Query("reg_no") String reg_no, @Query("pass") String pass);
 }

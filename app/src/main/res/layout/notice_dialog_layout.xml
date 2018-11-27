@@ -96,6 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView6"
+            android:visibility="gone"
             android:layout_below="@+id/textView6"
             android:text="Sending Date: 27 April 2018 9:00 am"
             android:textColor="#000000"
@@ -120,6 +121,7 @@
             android:layout_below="@+id/dg_homework_message"
             android:text="Sending Date"
             android:layout_marginTop="5dp"
+            android:visibility="gone"
             android:textSize="15sp"
             android:textStyle="bold" />
 

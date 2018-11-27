@@ -10,7 +10,7 @@ public class Fee {
   private int jan;
   private int feb;
   private int mar;
-  private int arp;
+  private int apr;
   private int may;
   private int jun;
   private int jul;
@@ -20,12 +20,12 @@ public class Fee {
   private int nov;
   private int dec;
 
-    public Fee(int year, int jan, int feb, int mar, int arp, int may, int jun, int jul, int aug, int sep, int oct, int nov, int dec) {
+    public Fee(int year, int jan, int feb, int mar, int apr, int may, int jun, int jul, int aug, int sep, int oct, int nov, int dec) {
         this.year = year;
         this.jan = jan;
         this.feb = feb;
         this.mar = mar;
-        this.arp = arp;
+        this.apr = apr;
         this.may = may;
         this.jun = jun;
         this.jul = jul;
@@ -53,7 +53,7 @@ public class Fee {
     }
 
     public int getArp() {
-        return arp;
+        return apr;
     }
 
     public int getMay() {

@@ -8,31 +8,13 @@ import java.util.List;
 
 public class OtherFee {
 
-    private List<Fees> other_fees;
+    List<String> string;
 
-    public OtherFee(List<Fees> other_fees) {
-        this.other_fees = other_fees;
+    public OtherFee(List<String> string) {
+        this.string = string;
     }
 
-    public List<Fees> getOther_fees() {
-        return other_fees;
-    }
-
-    public static class Fees {
-        String fee_name;
-        int status;
-
-        public String getFee_name() {
-            return fee_name;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public Fees(String fee_name, int status) {
-            this.fee_name = fee_name;
-            this.status = status;
-        }
+    public List<String> getString() {
+        return string;
     }
 }

@@ -2,6 +2,7 @@ package notification.push.com.smartschool.Fragment;
 
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class AttendenceFragment extends Fragment {
+
 
     HashMap<Date, Drawable> background;
     ColorDrawable blue;
@@ -76,6 +78,9 @@ public class AttendenceFragment extends Fragment {
     }
 
     private  void getAttendence(){
+        final ProgressDialog dialog = new ProgressDialog(getActivity());
+        dialog.setMessage("Getting Attendance....");
+        dialog.setCancelable(false);
         Stroage stroage = new Stroage(getActivity());
         RetrofitInterface retrofitInterface = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         Call<Attendence> getData = retrofitInterface.getAttendence(stroage.GetCurentUserReg());
@@ -126,6 +131,9 @@ public class AttendenceFragment extends Fragment {
                     }
                     caldroidFragment.setBackgroundDrawableForDates(background);
                     caldroidFragment.refreshView();
+                    if(dialog.isShowing()){
+                        dialog.dismiss();
+                    }
                 }
             }
 

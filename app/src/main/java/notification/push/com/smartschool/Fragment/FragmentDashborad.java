@@ -2,6 +2,7 @@ package notification.push.com.smartschool.Fragment;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import java.net.SocketTimeoutException;
 
 import notification.push.com.smartschool.Activity.Dashboard;
+import notification.push.com.smartschool.Activity.Profile;
 import notification.push.com.smartschool.Adapter.NoticeRecycleAdapter;
 import notification.push.com.smartschool.LocalStroage.Stroage;
 import notification.push.com.smartschool.Models.Homework;
@@ -120,8 +122,12 @@ public class FragmentDashborad extends Fragment {
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    /*
                     Fragment fragment = new ProfileFregment();
                     ((Dashboard)getActivity()).FragmentTransction(fragment,"Profile",R.id.nav_profile);
+                    */
+                    Intent intent = new Intent(getActivity(), Profile.class);
+                    startActivity(intent);
                 }
             });
 

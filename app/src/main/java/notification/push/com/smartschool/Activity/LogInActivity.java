@@ -2,6 +2,7 @@ package notification.push.com.smartschool.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -41,6 +42,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //views intiliztion
         InitView();
         input_validation();
@@ -154,8 +156,12 @@ public class LogInActivity extends AppCompatActivity {
 
                         indicate.setVisibility(View.GONE);
                         stroage.SaveLogInSate(true);
+                        stroage.SaveStudentPhoto(logIn.getStudent_photo());
+                        stroage.SavePassword(logIn.getPassword());
+                        //Log.d("from_server",logIn.getStudent_photo());
                         stroage.SaveUserRegNo(logIn.getReg_no());
                         stroage.SaveCurrentUSer(logIn.getStudent().get(0).getStudent_name());
+
                         Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         //intent.putExtra("profile",(Serializable) logIn.getStudent().get(0));

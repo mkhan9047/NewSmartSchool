@@ -48,13 +48,13 @@ public class NoticeDialogFragment extends DialogFragment {
         note_title = in.findViewById(R.id.dg_notice_title);
         note_message = in.findViewById(R.id.dg_homework_message);
         note_date = in.findViewById(R.id.dg_homework_date);
-        note_sending_date = in.findViewById(R.id.dg_homework_sending_date);
+       // note_sending_date = in.findViewById(R.id.dg_homework_sending_date);
 
         note_id.setText(String.format("Note ID: %d",items.getNotice_id()));
         note_title.setText(items.getNotice_title());
         note_message.setText(items.getMessage());
         note_date.setText(String.format("%s",items.getNotice_date()));
-        note_sending_date.setText(String.format("%s",items.getCreated_date()));
+      //  note_sending_date.setText(String.format("%s",items.getCreated_date()));
 
 
         builder.setView(in);
